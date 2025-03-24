@@ -1,0 +1,35 @@
+# --- DEPENDENCIAS PHP ---
+/vendor/
+composer.lock
+
+# --- ENTORNOS ---
+.env
+.env.*.local
+.env.local
+.env.test
+
+# --- CONFIGS DOCKER ---
+docker-compose.override.yml
+
+# --- LOGS Y TEMPORALES ---
+*.log
+xdebug.log
+coverage/
+.cache/
+
+# --- PHPUnit ---
+/phpunit.xml
+
+# --- ARCHIVOS DE SISTEMA ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs ---
+
+# PhpStorm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+.history/
