@@ -367,6 +367,8 @@ protected function tearDown(): void {
     // limpiar recursos
 }
 ```
+### `test double`
+Término genérico para mocks, stubs, spies y fakes usados en pruebas.
 
 ### `mock`
 Objeto falso que simula el comportamiento de una clase o interfaz.  
@@ -382,12 +384,53 @@ Mock más simple, que devuelve valores predefinidos.
 $stub->method('buscar')->willReturn($usuario);
 ```
 
-### `test double`
-Término genérico para mocks, stubs, spies y fakes usados en pruebas.
+### `expects()`
+Define cuántas veces se espera que se llame un método del spy.  
+**Ejemplo:**
+```php
+$notificador->expects($this->once());
+```
 
-### `cobertura de tests`
-Porcentaje de código que está siendo cubierto por tests.  
-**Ejemplo con PHPUnit:**
-```bash
-vendor/bin/phpunit --coverage-html cobertura/
+### `method()`
+Indica qué método se quiere espiar.  
+**Ejemplo:**
+```php
+->method('enviarFelicitacion')
+```
+
+### `with()`
+Especifica los argumentos esperados en la llamada al método.  
+**Ejemplo:**
+```php
+->with('ana@example.com', '¡Feliz cumpleaños Ana!')
+```
+
+### `once()` / `never()` / `exactly(n)`
+Indican cuántas veces se espera que se llame el método.
+- `once()` → una vez
+- `never()` → ninguna
+- `exactly(2)` → exactamente dos veces  
+  **Ejemplo:**
+```php
+$this->once();
+$this->never();
+$this->exactly(2);
+```
+
+### Ejemplo completo de spy en PHPUnit:
+
+```php
+public function test_guardador_guarda_datos_al_procesar()
+{
+    $repositorio = $this->createMock(RepositorioDeDatos::class);
+
+    $repositorio->expects($this->once())
+        ->method('guardar')
+        ->with($this->equalTo(['id' => 123, 'valor' => 'prueba']));
+
+    $servicio = new ProcesadorDeDatos($repositorio);
+
+    $entrada = ['id' => 123, 'valor' => 'prueba'];
+    $servicio->procesar($entrada);
+}
 ```
