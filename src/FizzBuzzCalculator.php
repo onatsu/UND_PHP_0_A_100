@@ -5,13 +5,31 @@ namespace App;
 class FizzBuzzCalculator
 {
 
-    public function execute(int $number ):FizzBuzzResponse
+    public function execute(array $numbers):array
     {
-        if($number == 3)
+        $output=[];
+        foreach ($numbers as $number)
         {
-            return new \App\FizzBuzzResponse(true, $number, "Fizz");
-        }
+            if(($number % 15)==0)
+            {
+                $output[]=new \App\FizzBuzzResponse(true, $number, "FizzBuzz");
+                continue;
+            } 
 
-        return new \App\FizzBuzzResponse(false, $number);
+            if(($number % 3)==0)
+            {
+                $output[]=new \App\FizzBuzzResponse(true, $number, "Fizz");
+                continue;
+            }
+
+            if(($number % 5)==0)
+            {
+                $output[]=new \App\FizzBuzzResponse(true, $number, "Buzz");
+                continue;
+            }            
+
+            $output[]=new \App\FizzBuzzResponse(false, $number);
+        }
+        return $output;
     }
 }
