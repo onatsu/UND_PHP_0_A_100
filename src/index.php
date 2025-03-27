@@ -1,9 +1,10 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\FizzBuzzCalculator;
+use App\CSVDataReader;
 
-$fizzBuzzCalculator=new FizzBuzzCalculator();
-$numbers=[1,2,3,4,5];
+$fileName="datos.csv";
+$dataReader=new CSVDataReader($fileName);
 
-print_r($fizzBuzzCalculator->execute($numbers));
+$data=$dataReader->getData();
+print_r($data[0]);
