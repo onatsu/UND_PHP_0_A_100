@@ -8,5 +8,3 @@ $dataReader=new CSVDataReader($fileName);
 
 $data=$dataReader->getData();
 print_r($data[0]);
-
-
