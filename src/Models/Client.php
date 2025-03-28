@@ -4,14 +4,14 @@ namespace App\Models;
 class Client{
     private string $firstName;
     private string $lastName;
-    private string $dateOfBirth;
+    private \DateTime $dateOfBirth;
     private string $email;  
     
     public function __construct(string $firstName, string $lastName, string $dateOfBirth, string $email)
     {  
         $this->firstName = $firstName; 
         $this->lastName = $lastName;
-        $this->dateOfBirth = $dateOfBirth;
+        $this->dateOfBirth = new \DateTime($dateOfBirth);
         $this->email = $email;
 
     }
