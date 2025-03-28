@@ -7,4 +7,4 @@ $fileName="datos.csv";
 $dataReader=new CSVDataReader($fileName);
 
 $data=$dataReader->getData();
-print_r($data[0]);
+print_r($data);
