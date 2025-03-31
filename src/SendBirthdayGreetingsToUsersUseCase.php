@@ -5,17 +5,17 @@ use App\DataFilterByBirthday;
 
 class SendBirthdayGreetingsToUsersUseCase
 {
-    private $csvfile;
+    private $clientProvider;
     private $filter;
 
-    public function __construct(CSVDataReader $csvfile, DataFilterByBirthday $filter){
-        $this->csvfile = $csvfile;
+    public function __construct(CSVDataReader $clientProvider, DataFilterByBirthday $filter){
+        $this->clientProvider = $clientProvider;
         $this->filter = $filter;
     }
 
     public function execute()
     {
-        $data=$this->csvfile->getData();
+        $data=$this->clientProvider->getData();
 
         print_r($this->filter->filter($data));
     }
