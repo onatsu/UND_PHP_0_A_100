@@ -3,8 +3,9 @@ namespace App;
 
 use App\Models\ClientList;
 use App\Models\Client;
+use App\Models\ClientsProvider;
 
-class CSVDataReader{
+class CSVClientsProvider implements ClientsProvider{
     private ClientList $data;
     private $handle;
     

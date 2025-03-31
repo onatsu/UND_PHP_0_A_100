@@ -1,21 +1,21 @@
 <?php
 namespace App;
-use App\CSVDataReader;
+use App\Models\ClientsProvider;
 use App\DataFilterByBirthday;
 
 class SendBirthdayGreetingsToUsersUseCase
 {
-    private $clientProvider;
+    private $clientsProvider;
     private $filterByDate;
 
-    public function __construct(CSVDataReader $clientProvider, DataFilterByBirthday $filterByDate){
-        $this->clientProvider = $clientProvider;
+    public function __construct(ClientsProvider $clientsProvider, DataFilterByBirthday $filterByDate){
+        $this->clientsProvider = $clientsProvider;
         $this->filterByDate = $filterByDate;
     }
 
     public function execute()
     {
-        $data=$this->clientProvider->getData();
+        $data=$this->clientsProvider->getData();
 
         print_r($this->filterByDate->filter($data));
     }

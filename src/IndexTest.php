@@ -1,11 +1,11 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\CSVDataReader;
+use App\CSVClientsProvider;
 use App\DataFilterByBirthday;
 
 $fileName="datos.csv";
-$dataReader=new CSVDataReader($fileName);
+$dataReader=new CSVClientsProvider($fileName);
 
 $data=$dataReader->getData();
 
