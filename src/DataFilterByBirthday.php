@@ -2,19 +2,23 @@
 namespace App;
 
 use App\Models\ClientList;
+use App\Models\Date;
 
 class DataFilterByBirthday{
 
+    private Date $today;
+
+    public function __construct(Date $today)
+    {
+        $this->today = $today;
+    }
+
     public function filter(ClientList $data): ClientList{
         $clientListFiltered = new ClientList();
-
-        $today = new \DateTime("1982/10/08");
-    
         
         foreach ($data->getClients() as $client)
         {
-
-            if ($client->getDateOfBirth()->format("m-d") == $today->format("m-d")){
+            if ($this->today->compare($client->getDateOfBirth())){
                 $clientListFiltered->add($client);
             }
         }
