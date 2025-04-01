@@ -2,7 +2,8 @@
     "name": "davidcruz/kata-boilplate",
     "require": {
         "phpunit/phpunit": "^9.5",
-        "ramsey/uuid": "^4.1"
+        "ramsey/uuid": "^4.1",
+        "dotenv-org/phpdotenv-vault": "^0.2.4"
     },
     "description": "Kata Boilplate",
     "autoload": {

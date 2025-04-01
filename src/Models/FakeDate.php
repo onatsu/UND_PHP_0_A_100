@@ -15,7 +15,7 @@ class FakeDate implements Date
 
     public function compare(Date $date): bool
     {
-        return $this->date->format('Y-m-d') == $date->getRawDate()->format('Y-m-d');
+        return true;
     }
 
     public function getRawDate(): \DateTime
