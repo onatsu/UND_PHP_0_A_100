@@ -4,11 +4,11 @@ namespace App\rpg;
 
 class Health
 {
-    const int MAXIMUM_VALUE = 1000;
-    const int MINIMUM_VALUE = 0;
+    const MAXIMUM_VALUE = 1000;
+    const MINIMUM_VALUE = 0;
     private int $life;
 
-    public function __construct(int $healthValue)
+    public function __construct(int $healthValue=1000)
     {
         $this->life = $healthValue;
         if ($healthValue > self::MAXIMUM_VALUE) {
@@ -23,6 +23,13 @@ class Health
         $this->life -= $damagePoints;
         $this->checkMin($this->life);
     }
+
+    public function increase(int $healPoints)
+    {
+        $this->life += $healPoints;
+        $this->checkMax($this->life);
+    }
+
 
     public function getPoints()
     {
@@ -39,6 +46,7 @@ class Health
             $this->life = self::MINIMUM_VALUE;
         }
     }
+    
 
     public function haveLife()
     {

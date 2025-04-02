@@ -13,4 +13,9 @@ class Status
     {
         $this->isAlive = false;
     }
+
+    public function __toString(){
+        if ($this->isAlive==true) return "VIVO";
+        return "MUERTO";
+    }
 }
